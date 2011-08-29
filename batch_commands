@@ -1,0 +1,7 @@
+
+for ((  i = 2 ;  i <= 9;  i++  ))
+do
+  hadoop dfs -rmr output/filtered_features/*
+  hadoop jar build/NodeRandomFiltering.jar org.viirya.graph.NodeRandomFiltering data/flickr550/features/flickr550.textual 0.$i
+  hadoop dfs -mv output/filtered_features/filtered/*.gz data/flickr550/features/flickr550.textual.partial/0.$i/.
+done
